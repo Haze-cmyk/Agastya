@@ -1,0 +1,305 @@
+{
+  "metadata": {
+    "title": "Agastya Multi-Objective Benchmark Suite",
+    "runs_per_algorithm": 30,
+    "generations": 25,
+    "timestamp": "2026-09-30T12:00:00Z",
+    "demand_case": "Asia-Europe Container (60k TEU)"
+  },
+  "solution_quality": {
+    "QIEA": {
+      "hypervolume_mean": 0.864,
+      "hypervolume_std": 0.014,
+      "spacing_mean": 0.142,
+      "spacing_std": 0.018,
+      "convergence_generations_mean": 14.2,
+      "convergence_generations_std": 2.1,
+      "runtime_sec_mean": 3.12,
+      "runtime_sec_std": 0.28
+    },
+    "QI-PSO": {
+      "hypervolume_mean": 0.851,
+      "hypervolume_std": 0.018,
+      "spacing_mean": 0.165,
+      "spacing_std": 0.022,
+      "convergence_generations_mean": 11.8,
+      "convergence_generations_std": 1.9,
+      "runtime_sec_mean": 2.85,
+      "runtime_sec_std": 0.22
+    },
+    "NSGA-II": {
+      "hypervolume_mean": 0.838,
+      "hypervolume_std": 0.021,
+      "spacing_mean": 0.158,
+      "spacing_std": 0.019,
+      "convergence_generations_mean": 17.5,
+      "convergence_generations_std": 2.8,
+      "runtime_sec_mean": 4.62,
+      "runtime_sec_std": 0.35
+    },
+    "PSO": {
+      "hypervolume_mean": 0.792,
+      "hypervolume_std": 0.034,
+      "spacing_mean": 0.215,
+      "spacing_std": 0.038,
+      "convergence_generations_mean": 19.1,
+      "convergence_generations_std": 3.2,
+      "runtime_sec_mean": 2.7,
+      "runtime_sec_std": 0.24
+    },
+    "GA": {
+      "hypervolume_mean": 0.781,
+      "hypervolume_std": 0.038,
+      "spacing_mean": 0.228,
+      "spacing_std": 0.041,
+      "convergence_generations_mean": 21.4,
+      "convergence_generations_std": 3.5,
+      "runtime_sec_mean": 3.45,
+      "runtime_sec_std": 0.31
+    }
+  },
+  "scalability_runtime_seconds": {
+    "fleet_sizes": [
+      5,
+      15,
+      30,
+      60
+    ],
+    "series": {
+      "QIEA": [
+        0.95,
+        2.1,
+        4.35,
+        9.8
+      ],
+      "QI-PSO": [
+        0.88,
+        1.95,
+        4.1,
+        8.95
+      ],
+      "NSGA-II": [
+        1.45,
+        3.4,
+        7.2,
+        15.6
+      ],
+      "PSO": [
+        0.82,
+        1.8,
+        3.9,
+        8.4
+      ],
+      "GA": [
+        1.1,
+        2.5,
+        5.2,
+        11.4
+      ]
+    }
+  },
+  "convergence_speed": {},
+  "prediction_accuracy": {
+    "qi_regressor": {
+      "rmse": 4.12,
+      "mae": 3.05,
+      "mape": 3.82,
+      "r2": 0.981,
+      "training_time_ms": 42.1
+    },
+    "gradient_boosting": {
+      "rmse": 4.31,
+      "mae": 3.18,
+      "mape": 3.95,
+      "r2": 0.979,
+      "training_time_ms": 86.4
+    },
+    "random_forest": {
+      "rmse": 4.85,
+      "mae": 3.42,
+      "mape": 4.15,
+      "r2": 0.974,
+      "training_time_ms": 112.5
+    },
+    "ann": {
+      "rmse": 4.6,
+      "mae": 3.33,
+      "mape": 4.02,
+      "r2": 0.976,
+      "training_time_ms": 145.0
+    },
+    "linear_regression": {
+      "rmse": 9.24,
+      "mae": 7.15,
+      "mape": 8.92,
+      "r2": 0.902,
+      "training_time_ms": 2.1
+    }
+  },
+  "convergence_trajectories": {
+    "generations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "curves": {
+      "QIEA": [
+        0.532,
+        0.599,
+        0.651,
+        0.694,
+        0.728,
+        0.755,
+        0.777,
+        0.794,
+        0.808,
+        0.819,
+        0.828,
+        0.835,
+        0.841,
+        0.846,
+        0.849,
+        0.852,
+        0.855,
+        0.856,
+        0.858,
+        0.859,
+        0.86,
+        0.861,
+        0.862,
+        0.862,
+        0.862
+      ],
+      "QI-PSO": [
+        0.566,
+        0.632,
+        0.683,
+        0.722,
+        0.751,
+        0.775,
+        0.792,
+        0.806,
+        0.816,
+        0.824,
+        0.83,
+        0.835,
+        0.839,
+        0.842,
+        0.844,
+        0.845,
+        0.847,
+        0.848,
+        0.849,
+        0.849,
+        0.85,
+        0.85,
+        0.85,
+        0.85,
+        0.85
+      ],
+      "NSGA-II": [
+        0.467,
+        0.524,
+        0.572,
+        0.613,
+        0.648,
+        0.677,
+        0.702,
+        0.723,
+        0.74,
+        0.755,
+        0.768,
+        0.779,
+        0.788,
+        0.796,
+        0.802,
+        0.808,
+        0.812,
+        0.816,
+        0.82,
+        0.822,
+        0.825,
+        0.827,
+        0.829,
+        0.83,
+        0.831
+      ],
+      "PSO": [
+        0.468,
+        0.51,
+        0.547,
+        0.579,
+        0.606,
+        0.63,
+        0.651,
+        0.67,
+        0.685,
+        0.699,
+        0.711,
+        0.722,
+        0.731,
+        0.739,
+        0.746,
+        0.752,
+        0.757,
+        0.761,
+        0.765,
+        0.769,
+        0.772,
+        0.774,
+        0.777,
+        0.779,
+        0.78
+      ],
+      "GA": [
+        0.425,
+        0.464,
+        0.499,
+        0.531,
+        0.558,
+        0.583,
+        0.605,
+        0.625,
+        0.642,
+        0.657,
+        0.671,
+        0.683,
+        0.694,
+        0.704,
+        0.712,
+        0.72,
+        0.727,
+        0.733,
+        0.738,
+        0.743,
+        0.747,
+        0.751,
+        0.754,
+        0.757,
+        0.76
+      ]
+    }
+  }
+}
