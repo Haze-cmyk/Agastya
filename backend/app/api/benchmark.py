@@ -29,6 +29,8 @@ def get_client_ip(request: Request) -> str:
     return request.client.host if request.client else "127.0.0.1"
 
 
+@router.get("")
+@router.get("/")
 @router.get("/precomputed")
 def get_precomputed_benchmarks():
     """

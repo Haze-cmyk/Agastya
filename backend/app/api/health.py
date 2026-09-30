@@ -12,6 +12,7 @@ _server_start_time = time.time()
 
 
 @router.get("/health")
+@router.get("/api/health")
 def health_check():
     """Uptime and readiness ping."""
     return {
