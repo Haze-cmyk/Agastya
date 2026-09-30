@@ -18,11 +18,11 @@ export const ConvergenceChart: React.FC<ConvergenceChartProps> = ({ generations,
 
   // Strictly palette colors
   const colorMap: Record<string, string> = {
-    QIEA: 'var(--color-golden-earth)',
-    'QI-PSO': 'var(--color-dark-spruce)',
-    'NSGA-II': 'var(--color-muted-teal)',
-    GA: '#5A3D18',
-    PSO: '#40604A'
+    QIEA: 'var(--oxblood, #92140c)',
+    'QI-PSO': 'var(--shadow-grey, #1e1e24)',
+    'NSGA-II': 'var(--color-muted-teal, #4E5360)',
+    GA: '#7D7A84',
+    PSO: '#C26747'
   };
 
   return (

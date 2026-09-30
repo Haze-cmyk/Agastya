@@ -21,9 +21,9 @@ export const PowerSpeedChart: React.FC<PowerSpeedChartProps> = ({
   cHull,
   displacementRatio = 1.0
 }) => {
-  const width = 520;
-  const height = 240;
-  const padding = { top: 20, right: 30, bottom: 40, left: 60 };
+  const width = 560;
+  const height = 250;
+  const padding = { top: 26, right: 35, bottom: 44, left: 65 };
   const plotWidth = width - padding.left - padding.right;
   const plotHeight = height - padding.top - padding.bottom;
 
@@ -52,6 +52,9 @@ export const PowerSpeedChart: React.FC<PowerSpeedChartProps> = ({
   const currentX = getX(currentSpeed);
   const currentY = getY(currentPower);
 
+  const mcrMw = (engineMcrKw / 1000).toFixed(0);
+  const mcrKwFormatted = Math.round(engineMcrKw).toLocaleString();
+
   return (
     <div style={{ backgroundColor: 'var(--bg-panel-light)', border: '1px solid var(--border-subtle)', padding: '12px' }}>
       <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-main)', marginBottom: '8px', textTransform: 'uppercase' }}>
@@ -65,9 +68,9 @@ export const PowerSpeedChart: React.FC<PowerSpeedChartProps> = ({
           y={padding.top}
           width={getX(minSpeed) - padding.left}
           height={plotHeight}
-          fill="rgba(153, 98, 30, 0.12)"
+          fill="rgba(146, 20, 12, 0.08)"
         />
-        <text x={padding.left + 6} y={padding.top + 14} fontSize="9" fill="var(--color-golden-earth)" fontWeight="700">
+        <text x={padding.left + 6} y={padding.top + 14} fontSize="9" fill="var(--oxblood)" fontWeight="700">
           MANEUVER CLAMP (&lt;{minSpeed}kn)
         </text>
 
@@ -77,9 +80,16 @@ export const PowerSpeedChart: React.FC<PowerSpeedChartProps> = ({
           y={padding.top}
           width={width - padding.right - getX(maxSpeed)}
           height={plotHeight}
-          fill="rgba(153, 35, 30, 0.12)"
+          fill="rgba(146, 20, 12, 0.10)"
         />
-        <text x={getX(maxSpeed) + 6} y={padding.top + 14} fontSize="9" fill="var(--danger)" fontWeight="700">
+        <text
+          x={width - padding.right - 6}
+          y={padding.top + 14}
+          textAnchor="end"
+          fontSize="9"
+          fill="var(--oxblood)"
+          fontWeight="700"
+        >
           MCR EXCEEDED (&gt;{maxSpeed}kn)
         </text>
 
@@ -89,8 +99,8 @@ export const PowerSpeedChart: React.FC<PowerSpeedChartProps> = ({
           const powerKw = pct * maxPower;
           return (
             <g key={i}>
-              <line x1={padding.left} y1={yPos} x2={width - padding.right} y2={yPos} stroke="rgba(115, 158, 130, 0.2)" strokeDasharray="2,2" />
-              <text x={padding.left - 6} y={yPos + 4} textAnchor="end" fontSize="9" fill="var(--color-dark-spruce)" fontFamily="var(--font-mono)">
+              <line x1={padding.left} y1={yPos} x2={width - padding.right} y2={yPos} stroke="rgba(30, 30, 36, 0.10)" strokeDasharray="2,2" />
+              <text x={padding.left - 6} y={yPos + 4} textAnchor="end" fontSize="9" fill="var(--shadow-grey)" fontFamily="var(--font-mono)">
                 {(powerKw / 1000).toFixed(0)}k
               </text>
             </g>
@@ -103,41 +113,50 @@ export const PowerSpeedChart: React.FC<PowerSpeedChartProps> = ({
           y1={getY(engineMcrKw)}
           x2={width - padding.right}
           y2={getY(engineMcrKw)}
-          stroke="var(--color-dark-spruce)"
+          stroke="var(--shadow-grey)"
           strokeWidth="1.2"
           strokeDasharray="4,4"
         />
-        <text x={width - padding.right - 4} y={getY(engineMcrKw) - 4} textAnchor="end" fontSize="9" fontWeight="700" fill="var(--color-dark-spruce)">
-          Rated MCR: {(engineMcrKw / 1000).toFixed(0)} kW
+        {/* Positioned on left side to prevent collision with MCR EXCEEDED */}
+        <text
+          x={padding.left + 8}
+          y={getY(engineMcrKw) - 6}
+          textAnchor="start"
+          fontSize="9"
+          fontWeight="700"
+          fill="var(--shadow-grey)"
+          fontFamily="var(--font-mono)"
+        >
+          Rated MCR: {mcrMw} MW ({mcrKwFormatted} kW)
         </text>
 
         {/* Power curve polyline */}
-        <polyline fill="none" stroke="var(--color-dark-spruce)" strokeWidth="2.5" points={pointsString} />
+        <polyline fill="none" stroke="var(--shadow-grey)" strokeWidth="2.5" points={pointsString} />
 
         {/* Design speed line */}
-        <line x1={getX(designSpeed)} y1={padding.top} x2={getX(designSpeed)} y2={height - padding.bottom} stroke="var(--color-muted-teal)" strokeWidth="1" strokeDasharray="3,3" />
-        <text x={getX(designSpeed)} y={height - padding.bottom - 4} textAnchor="middle" fontSize="9" fill="var(--color-muted-teal)">
+        <line x1={getX(designSpeed)} y1={padding.top} x2={getX(designSpeed)} y2={height - padding.bottom} stroke="var(--border-subtle)" strokeWidth="1.2" strokeDasharray="3,3" />
+        <text x={getX(designSpeed)} y={height - padding.bottom - 8} textAnchor="middle" fontSize="9" fontWeight="600" fill="var(--text-muted)">
           Design: {designSpeed}kn
         </text>
 
         {/* Current Operating point */}
-        <circle cx={currentX} cy={currentY} r={6} fill="var(--color-golden-earth)" stroke="#FFFFFF" strokeWidth="2" />
+        <circle cx={currentX} cy={currentY} r={6.5} fill="var(--oxblood)" stroke="#FFFFFF" strokeWidth="2" />
 
         {/* Axes */}
-        <line x1={padding.left} y1={height - padding.bottom} x2={width - padding.right} y2={height - padding.bottom} stroke="var(--color-dark-spruce)" strokeWidth="1.2" />
-        <line x1={padding.left} y1={padding.top} x2={padding.left} y2={height - padding.bottom} stroke="var(--color-dark-spruce)" strokeWidth="1.2" />
+        <line x1={padding.left} y1={height - padding.bottom} x2={width - padding.right} y2={height - padding.bottom} stroke="var(--shadow-grey)" strokeWidth="1.5" />
+        <line x1={padding.left} y1={padding.top} x2={padding.left} y2={height - padding.bottom} stroke="var(--shadow-grey)" strokeWidth="1.5" />
 
         {/* Axis labels */}
-        <text x={width / 2} y={height - 8} textAnchor="middle" fontSize="11" fontWeight="600" fill="var(--color-dark-spruce)">
+        <text x={width / 2} y={height - 8} textAnchor="middle" fontSize="11" fontWeight="600" fill="var(--shadow-grey)">
           Speed Through Water (knots)
         </text>
-        <text transform="rotate(-90)" x={-(height / 2)} y={16} textAnchor="middle" fontSize="11" fontWeight="600" fill="var(--color-dark-spruce)">
+        <text transform="rotate(-90)" x={-(height / 2)} y={16} textAnchor="middle" fontSize="11" fontWeight="600" fill="var(--shadow-grey)">
           Propulsion Power (kW)
         </text>
 
         {/* Speed ticks */}
         {[8, 12, 16, 20, 24].map((spd) => (
-          <text key={spd} x={getX(spd)} y={height - padding.bottom + 14} textAnchor="middle" fontSize="9" fill="var(--color-dark-spruce)" fontFamily="var(--font-mono)">
+          <text key={spd} x={getX(spd)} y={height - padding.bottom + 14} textAnchor="middle" fontSize="9" fill="var(--shadow-grey)" fontFamily="var(--font-mono)">
             {spd}kn
           </text>
         ))}
