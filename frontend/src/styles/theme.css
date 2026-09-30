@@ -1,0 +1,226 @@
+/*
+  Agastya Industrial Engineering Design System
+  Strict Color Palette:
+  - Golden Earth:   #99621E (primary accents, links, primary buttons)
+  - Toasted Almond: #D38B5D (chart series, highlights; never as text on Lime Cream)
+  - Lime Cream:     #F3FFB6 (page background, panel backgrounds)
+  - Muted Teal:     #739E82 (borders, secondary buttons, chart marks)
+  - Dark Spruce:    #2C5530 (text, headers, dark panels, navigation)
+*/
+
+:root {
+  --color-golden-earth: #99621E;
+  --color-toasted-almond: #D38B5D;
+  --color-lime-cream: #F3FFB6;
+  --color-muted-teal: #739E82;
+  --color-dark-spruce: #2C5530;
+
+  /* Derived Neutrals */
+  --bg-app: #F5FCC6;
+  --bg-panel: #EDF9AB;
+  --bg-panel-light: #F8FDDB;
+  --bg-input: #FAFEDE;
+  --bg-card: #EBF8A5;
+  --border-subtle: #739E82;
+  --border-strong: #2C5530;
+  --text-main: #2C5530;
+  --text-muted: #3D6A42;
+  --text-inverse: #F3FFB6;
+  --accent-primary: #99621E;
+  --accent-hover: #7E4F16;
+  --danger: #99231E;
+  --success: #2C5530;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Source Sans 3", "IBM Plex Sans", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.5;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Numeric tabular formatting */
+.num, td.num, th.num, .metric-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Engineering flat buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+  user-select: none;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: var(--text-inverse);
+  border-color: var(--color-dark-spruce);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border-color: var(--border-subtle);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-panel);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  color: #FFFFFF;
+  border-color: var(--danger);
+}
+
+/* Form Controls */
+input, select, textarea {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-main);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-dark-spruce);
+  box-shadow: 0 0 0 1px var(--color-dark-spruce);
+}
+
+input[type="number"] {
+  font-family: var(--font-mono);
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tables */
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background-color: var(--bg-panel-light);
+  border: 1px solid var(--border-subtle);
+}
+
+table.data-table th {
+  background-color: var(--bg-panel);
+  color: var(--text-main);
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+table.data-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(115, 158, 130, 0.3);
+  color: var(--text-main);
+}
+
+table.data-table tr:hover {
+  background-color: rgba(243, 255, 182, 0.7);
+}
+
+table.data-table tr.selected {
+  background-color: rgba(153, 98, 30, 0.18);
+  font-weight: 600;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
+}
+
+.badge-feasible {
+  background-color: #2C5530;
+  color: #F3FFB6;
+}
+
+.badge-infeasible {
+  background-color: #99231E;
+  color: #FFFFFF;
+}
+
+.badge-warning {
+  background-color: #99621E;
+  color: #F3FFB6;
+}
+
+/* Print Stylesheet */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  header, aside, .no-print, button, .btn {
+    display: none !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  table.data-table {
+    border: 1px solid #000000 !important;
+  }
+
+  table.data-table th, table.data-table td {
+    border: 1px solid #CCCCCC !important;
+    color: #000000 !important;
+  }
+}
