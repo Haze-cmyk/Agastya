@@ -1,0 +1,90 @@
+{
+  "NLRTM": {
+    "port_id": "NLRTM",
+    "name": "Port of Rotterdam",
+    "country": "Netherlands",
+    "available_fuels": ["HFO", "VLSFO", "MGO", "LNG", "Methanol", "Ammonia", "Hydrogen"],
+    "shore_power_available": true,
+    "shore_power_capacity_mw": 25.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 290.0,
+    "shore_power_tariff_usd_per_kwh": 0.22,
+    "port_fee_per_call_usd": 38000.0
+  },
+  "SGSIN": {
+    "port_id": "SGSIN",
+    "name": "Port of Singapore",
+    "country": "Singapore",
+    "available_fuels": ["HFO", "VLSFO", "MGO", "LNG", "Methanol", "Ammonia"],
+    "shore_power_available": true,
+    "shore_power_capacity_mw": 30.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 395.0,
+    "shore_power_tariff_usd_per_kwh": 0.19,
+    "port_fee_per_call_usd": 34000.0
+  },
+  "CNSHA": {
+    "port_id": "CNSHA",
+    "name": "Port of Shanghai",
+    "country": "China",
+    "available_fuels": ["HFO", "VLSFO", "MGO", "LNG", "Methanol"],
+    "shore_power_available": true,
+    "shore_power_capacity_mw": 40.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 535.0,
+    "shore_power_tariff_usd_per_kwh": 0.15,
+    "port_fee_per_call_usd": 31000.0
+  },
+  "USLAX": {
+    "port_id": "USLAX",
+    "name": "Port of Los Angeles",
+    "country": "United States",
+    "available_fuels": ["HFO", "VLSFO", "MGO", "LNG", "Methanol", "Hydrogen"],
+    "shore_power_available": true,
+    "shore_power_capacity_mw": 35.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 210.0,
+    "shore_power_tariff_usd_per_kwh": 0.24,
+    "port_fee_per_call_usd": 42000.0
+  },
+  "AUPHE": {
+    "port_id": "AUPHE",
+    "name": "Port Hedland",
+    "country": "Australia",
+    "available_fuels": ["HFO", "VLSFO", "MGO", "LNG"],
+    "shore_power_available": false,
+    "shore_power_capacity_mw": 0.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 610.0,
+    "shore_power_tariff_usd_per_kwh": 0.28,
+    "port_fee_per_call_usd": 48000.0
+  },
+  "SARAS": {
+    "port_id": "SARAS",
+    "name": "Ras Tanura",
+    "country": "Saudi Arabia",
+    "available_fuels": ["HFO", "VLSFO", "MGO"],
+    "shore_power_available": false,
+    "shore_power_capacity_mw": 0.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 680.0,
+    "shore_power_tariff_usd_per_kwh": 0.12,
+    "port_fee_per_call_usd": 29000.0
+  },
+  "BEANR": {
+    "port_id": "BEANR",
+    "name": "Port of Antwerp-Bruges",
+    "country": "Belgium",
+    "available_fuels": ["HFO", "VLSFO", "MGO", "LNG", "Methanol", "Hydrogen"],
+    "shore_power_available": true,
+    "shore_power_capacity_mw": 20.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 160.0,
+    "shore_power_tariff_usd_per_kwh": 0.23,
+    "port_fee_per_call_usd": 36000.0
+  },
+  "KRPUS": {
+    "port_id": "KRPUS",
+    "name": "Port of Busan",
+    "country": "South Korea",
+    "available_fuels": ["HFO", "VLSFO", "MGO", "LNG", "Methanol"],
+    "shore_power_available": true,
+    "shore_power_capacity_mw": 20.0,
+    "grid_carbon_intensity_gco2e_per_kwh": 460.0,
+    "shore_power_tariff_usd_per_kwh": 0.17,
+    "port_fee_per_call_usd": 30000.0
+  }
+}

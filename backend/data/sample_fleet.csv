@@ -1,0 +1,10 @@
+vessel_name,vessel_type,built_year,current_fuel,capacity_teu,capacity_dwt,assigned_speed_knots
+Agastya Voyager,Container_14000TEU,2021,VLSFO,14000,,17.5
+Agastya Pioneer,Container_14000TEU,2022,LNG,14000,,18.0
+Agastya Feeder 1,Feeder_2500TEU,2018,MGO,2500,,15.0
+Agastya Feeder 2,Feeder_2500TEU,2019,Methanol,2500,,15.5
+Agastya Iron 1,Capesize_180000DWT,2020,VLSFO,,180000,13.0
+Agastya Iron 2,Capesize_180000DWT,2023,LNG,,180000,13.5
+Agastya Trader,Panamax_82000DWT,2017,VLSFO,,82000,13.0
+Agastya Neptune,VLCC_300000DWT,2021,VLSFO,,300000,14.5
+Agastya Energy,Aframax_115000DWT,2022,LNG,,115000,14.0
