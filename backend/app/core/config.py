@@ -22,11 +22,8 @@ class Settings:
     PORT: int = int(os.environ.get("PORT", "8000"))
     HOST: str = os.environ.get("HOST", "0.0.0.0")
 
-    # CORS configuration
-    _allowed_origins_raw = os.environ.get(
-        "ALLOWED_ORIGINS",
-        "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://localhost:4173,https://agastya-fleet.netlify.app"
-    )
+    # CORS configuration: default to '*' for open access, or comma-separated list of origins
+    _allowed_origins_raw = os.environ.get("ALLOWED_ORIGINS", "*")
     ALLOWED_ORIGINS: List[str] = [origin.strip() for origin in _allowed_origins_raw.split(",") if origin.strip()]
 
     # Optimization job limits

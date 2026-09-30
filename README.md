@@ -202,23 +202,24 @@ npm run test
 
 ## Deployment Settings
 
-### Frontend: Netlify
-- **Base directory**: `frontend`
-- **Build command**: `npm run build`
-- **Publish directory**: `frontend/dist`
+### Backend: Railway (Active Production)
+- **Live Endpoint**: `https://agastya-production-b60f.up.railway.app`
+- **Documentation**: `https://agastya-production-b60f.up.railway.app/docs`
+- **Healthcheck Path**: `/health`
+- **Root Directory**: `backend`
+- **Build / Start**: Auto-detected via `backend/Dockerfile` and `backend/railway.json`
 - **Environment variables**:
-  - `VITE_API_URL`: `https://<your-backend-app>.onrender.com`
-
-### Backend: Render / Railway
-- **Base directory / Root directory**: `backend`
-- **Build command**: `pip install -r requirements.txt` (or Docker build)
-- **Start command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-- **Health check path**: `/health`
-- **Environment variables**:
-  - `ALLOWED_ORIGINS`: `https://<your-frontend-app>.netlify.app,http://localhost:5173`
+  - `ALLOWED_ORIGINS`: `*` (or comma-separated list of allowed origins)
   - `PORT`: `8000` (set automatically by host)
   - `MAX_JOB_SECONDS`: `180`
   - `MAX_FLEET_SIZE`: `100`
+
+### Frontend: Netlify
+- **Base directory**: `frontend`
+- **Build command**: `npm run build`
+- **Publish directory**: `dist`
+- **Environment variables**:
+  - `VITE_API_URL`: `https://agastya-production-b60f.up.railway.app` (preconfigured in `frontend/netlify.toml`)
 
 ---
 

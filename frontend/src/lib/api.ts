@@ -12,7 +12,21 @@ import {
   CaseStudy
 } from '../types';
 
-export const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+function resolveApiBase(): string {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && typeof envUrl === 'string' && envUrl.trim() !== '') {
+    return envUrl.trim().replace(/\/+$/, '');
+  }
+  if (typeof window !== 'undefined' && window.location) {
+    const host = window.location.hostname;
+    if (host !== 'localhost' && host !== '127.0.0.1') {
+      return 'https://agastya-production-b60f.up.railway.app';
+    }
+  }
+  return 'http://localhost:8000';
+}
+
+export const API_BASE = resolveApiBase();
 
 export class ApiError extends Error {
   statusCode: number;

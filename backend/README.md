@@ -81,11 +81,19 @@ pytest -v
    - `MAX_CONCURRENT_JOBS`: `3`
    - `RATE_LIMIT_PER_MINUTE`: `120`
 
-### Deploy to Railway
-1. Create a new Railway project and link the repository.
+### Deploy to Railway (Active Production)
+- **Live Endpoint**: `https://agastya-production-b60f.up.railway.app`
+- **Swagger Documentation**: `https://agastya-production-b60f.up.railway.app/docs`
+- **Healthcheck**: `https://agastya-production-b60f.up.railway.app/health`
+
+Setup steps:
+1. Create a new Railway project and link the repository `https://github.com/Haze-cmyk/Agastya.git`.
 2. Under service settings, set the **Root Directory** to `backend`.
 3. Railway automatically detects `railway.json` and `Dockerfile`.
-4. Configure environment variables matching `.env.example`.
+4. Environment variables (optional, defaults work out of the box):
+   - `ALLOWED_ORIGINS`: `*` (or your Netlify domain)
+   - `MAX_JOB_SECONDS`: `180`
+   - `MAX_FLEET_SIZE`: `100`
 
 ---
 

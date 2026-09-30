@@ -58,13 +58,40 @@ app = FastAPI(
 app.add_middleware(PayloadSizeLimitMiddleware)
 
 # 2. CORS middleware
+_is_wildcard = "*" in settings.ALLOWED_ORIGINS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
-    allow_credentials=True,
+    allow_origins=["*"] if _is_wildcard else settings.ALLOWED_ORIGINS,
+    allow_origin_regex=None if _is_wildcard else r"^https://.*\.netlify\.app$|^https://.*\.railway\.app$|^https://.*\.up\.railway\.app$|^http://localhost(:\d+)?$|^http://127\.0\.0\.1(:\d+)?$",
+    allow_credentials=False if _is_wildcard else True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/", tags=["System"])
+def root_endpoint():
+    """Root discovery endpoint providing service health and interactive API documentation."""
+    return {
+        "name": settings.API_TITLE,
+        "description": "Agastya — Quantum-Inspired Green Fleet Optimizer API",
+        "version": settings.VERSION,
+        "status": "healthy",
+        "documentation": "/docs",
+        "endpoints": {
+            "health": "/health",
+            "version": "/api/version",
+            "predict": "/api/predict",
+            "optimize": "/api/optimize",
+            "jobs": "/api/jobs/{job_id}",
+            "scenarios": "/api/scenarios/compare",
+            "benchmark": "/api/benchmark",
+            "vessels": "/api/data/vessels",
+            "fuels": "/api/data/fuels",
+            "ports": "/api/data/ports",
+            "case_studies": "/api/data/case-studies"
+        }
+    }
 
 
 # Exception Handlers
